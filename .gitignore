@@ -16,4 +16,8 @@ pip-log.txt
 *.pot
 
 # virtual environments
+.virtualenv
+
+# django environ file
 .env
+.pylintrc
