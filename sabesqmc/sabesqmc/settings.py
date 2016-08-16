@@ -58,6 +58,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
+    'quote',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
