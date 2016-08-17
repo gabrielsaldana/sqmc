@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 """sabesqmc URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -18,7 +20,10 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include('allauth.urls')),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^$', include('quote.urls'), namespace='quotes'),
+    # User management
+    url(r'^users/', include('users.urls', namespace='users')),
+    url(r'^accounts/', include('allauth.urls')),
+    # API
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
