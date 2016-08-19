@@ -1,0 +1,21 @@
+{% if messages %}
+{% for message in messages %}
+<div class="row">
+    <div class="alert alert-{{ alert_css }}" role="alert">
+        {{ message }}
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="row">
+    <form class="form-inline" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Desahógate aquí</label>
+            <input type="text" class="form-control" id="quoteInput" aria-describedby="quoteText" placeholder="Me caga... ">
+            <small id="quoteHelp" class="form-text text-muted">Tu mensaje es completamente anónimo.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</div>

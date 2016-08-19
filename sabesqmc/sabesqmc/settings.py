@@ -31,7 +31,6 @@ SECRET_KEY = env('DJANGO_SECRET_KEY', default='CHANGEME!!!')
 # SECURITY WARNING: don't run with debug turned on in production!
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = env.bool('DJANGO_DEBUG', False)
-TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
 
@@ -81,7 +80,9 @@ ROOT_URLCONF = 'sabesqmc.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            str(APPS_DIR.path('templates')),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -147,7 +148,6 @@ SOCIALACCOUNT_ADAPTER = 'users.adapters.SocialAccountAdapter'
 AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = 'users:redirect'
 LOGIN_URL = 'account_login'
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Las más {{ list_type }}{% endblock %}
+
+{% block content %}
+<div class="row">
+<h2>Las más {{ list_type }}</h2>
+</div>
+
+<div>
+    {% for quote in quote_list %}
+    <div class="phrase">
+        <p class="phrase">{{ quote|striptags|escape }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
