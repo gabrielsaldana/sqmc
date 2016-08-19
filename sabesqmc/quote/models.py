@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals, absolute_import
 
+from random import randrange
+
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
@@ -15,15 +17,15 @@ class QuoteManager(models.Manager):
         """
         Gets a random message from database
         """
-        size = self.approved.count()
+        size = int(self.latest('id').id)
         quote = None
         while not quote:
             rand_id = randrange(1,size)
             try:
-                quote = self.approved.get(pk=rand_id)
+                quote = self.approved().get(pk=rand_id)
                 if quote:
                     break
-            except self.DoesNotExist:
+            except Quote.DoesNotExist:
                 continue
         return quote
 
@@ -38,7 +40,7 @@ class Quote(models.Model):
     is_annonymous = models.BooleanField(default=1,blank=True)
     votes = models.IntegerField(default=0,null=True,blank=True)
 
-    manager = QuoteManager()
+    objects = QuoteManager()
 
     class Meta:
         ordering = ['-date_created']
@@ -47,7 +49,7 @@ class Quote(models.Model):
         return "%s" % self.message
 
     def get_absolute_url(self):
-        return reverse('quotes:message', args=[self.id])
+        return reverse('quote', args=[self.id])
 
     def vote(self, how):
         if how == "up":

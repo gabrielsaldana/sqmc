@@ -20,10 +20,10 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', include('quote.urls'), namespace='quotes'),
+    url(r'', include('quote.urls'), name='quotes'),
     # User management
-    url(r'^users/', include('users.urls', namespace='users')),
+    url(r'^users/', include('users.urls'), name='users'),
     url(r'^accounts/', include('allauth.urls')),
     # API
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api-auth/', include('rest_framework.urls'), name='rest_framework'),
 ]
