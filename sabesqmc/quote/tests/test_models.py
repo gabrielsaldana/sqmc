@@ -15,9 +15,20 @@ class TestQuote(TestCase):
         self.assertEqual(quote.__str__(), 'Me cagan las pruebas')
 
     def test_get_absolute_url(self):
-        self.assertEqual(quote.get_absolute_url(), '/1/')
+        quote = Quote()
+        quote.message = 'Me cagan las pruebas'
+        quote.save()
+        self.assertEqual(quote.get_absolute_url(), '/%s/' % quote.pk)
 
     def test_get_random(self):
+        quote1 = Quote(message="Me caga probar esto")
+        quote1.save()
+        quote2 = Quote(message="Me caga probar esto otra vez")
+        quote2.save()
+        quote3 = Quote(message="Me caga probar esto dos veces")
+        quote3.save()
+        quote4 = Quote(message="Me caga probar esto tres veces")
+        quote4.save()
         random = Quote.objects.get_random()
         self.assertTrue(random)
 
@@ -28,6 +39,6 @@ class TestQuote(TestCase):
         quote2 = Quote(message="Me caga probar esto otra vez", votes=-4)
         quote2.save()
         # check all got saved
-        self.assertEqual(3, Quote.objects.all().count())
+        self.assertEqual(2, Quote.objects.all().count())
         # check approved filtering
-        self.assertEqual(2, Quote.objects.approved().count())
+        self.assertEqual(1, Quote.objects.approved().count())
