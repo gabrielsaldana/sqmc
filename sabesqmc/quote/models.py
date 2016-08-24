@@ -36,9 +36,9 @@ class QuoteManager(models.Manager):
 class Quote(models.Model):
     message = models.CharField(max_length=140, unique=True)
     date_created = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True,blank=True)
-    is_annonymous = models.BooleanField(default=1,blank=True)
-    votes = models.IntegerField(default=0,null=True,blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
+    is_annonymous = models.BooleanField(default=1, blank=True)
+    votes = models.IntegerField(default=0, null=True, blank=True)
 
     objects = QuoteManager()
 
