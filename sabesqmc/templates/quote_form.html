@@ -1,8 +1,9 @@
-{% if messages %}
-{% for message in messages %}
+{% load crispy_forms_tags %}
+{% if form.errors %}
+{% for error in form.errors %}
 <div class="row">
     <div class="alert alert-{{ alert_css }}" role="alert">
-        {{ message }}
+        {{ error }}
     </div>
 </div>
 {% endfor %}

@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/$', views.QuoteDetailView.as_view(), name='quote'),
     url(r'^ultimas/$', views.RecentView.as_view(), name='latest'),
     url(r'^top/$', views.MostVotedView.as_view(), name='top'),
+    url(r'^new', views.QuoteCreateView.as_view(), name='new')
 ]
