@@ -14,6 +14,21 @@ from ..views import (
     RecentView,
 )
 
+class TestQuoteCreateView(TestCase):
+
+    def setUp(self):
+        self.client = Client()
+
+    def test_save_new_quote(self):
+        response = self.client.post(
+            reverse('new'),
+            {'message': 'Me caga probar esto'})
+        self.assertEqual(302, response.status_code)
+        response1 = self.client.get(response.url)
+        self.assertEqual(200, response1.status_code)
+        self.assertContains(response1, 'Me caga probar esto', status_code=200)
+
+
 class TestQuoteDetailView(TestCase):
 
     def setUp(self):
@@ -33,7 +48,7 @@ class TestQuoteDetailView(TestCase):
         """
         quote = Quote.objects.latest('id')
         response = self.client.get(reverse('quote', args=[quote.pk]))
-        self.assertEqual(200, response.status_code)
+        self.assertContains(response, quote.message, status_code=200)
 
 
 class TestMostVotedView(TestCase):
