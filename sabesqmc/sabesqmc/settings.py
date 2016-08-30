@@ -54,6 +54,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.twitter',
+    'crispy_forms',
 ]
 
 LOCAL_APPS = [
@@ -94,6 +95,9 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+CRISPY_FAIL_SILENTLY = not DEBUG
 
 # AUTHENTICATION CONFIGURATION
 # ------------------------------------------------------------------------------
