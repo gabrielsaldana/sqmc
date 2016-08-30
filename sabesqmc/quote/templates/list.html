@@ -5,15 +5,11 @@
 
 {% block content %}
 <div class="row">
-<h2>Las más {{ list_type }}</h2>
+    <h2 class="text-xs-center">Las más {{ list_type }}</h2>
 </div>
 
-<div>
-    {% for quote in quote_list %}
-    <div class="phrase">
-        <p class="phrase">{{ quote|striptags|escape }}</p>
-    </div>
-    {% endfor %}
-</div>
+{% for quote in quote_list %}
+{% include 'quote.html' %}
+{% endfor %}
 
 {% endblock content %}

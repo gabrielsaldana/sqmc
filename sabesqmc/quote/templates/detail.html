@@ -3,18 +3,18 @@
 
 {% block title %} {{ quote }} {% endblock %}
 
+{% block meta_description %}
+<meta name="description" content="{{ quote }}">
+{% endblock %}
+
 {% block content %}
-<div id="quote" class="row">
-    <div class="col-sm-6">
-        <div class="card card-block">
-            <h3 class="card-title">{{ quote }}</h3>
-            <p class="card-text">{{ quote.votes }} votos</p>
-        </div>
-    </div>
-</div>
-<div id="controls" class="row">
+
+{% include 'quote.html' %}
+
+<div id="controls" class="row text-xs-center">
     <a class="btn btn-primary" href="{% url 'homepage' %}">Ver más</a>
 </div>
 
 {% include 'quote_form.html' %}
+
 {% endblock content %}

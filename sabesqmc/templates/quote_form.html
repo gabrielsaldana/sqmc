@@ -9,13 +9,17 @@
 {% endif %}
 
 <div class="row">
-    <form class="form-inline" method="POST">
+    <form class="form-inline" method="POST" action="{% url 'new' %}">
         {% csrf_token %}
-        <div class="form-group">
-            <label>Desahógate aquí</label>
-            <input type="text" class="form-control" id="quoteInput" aria-describedby="quoteText" placeholder="Me caga... ">
-            <small id="quoteHelp" class="form-text text-muted">Tu mensaje es completamente anónimo.</small>
+        <div class="form-group col-xs-10">
+            {% for field in form %}
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.help_text|safe }}
+            {% endfor  %}
+            <!-- <input type="text" class="form-control" id="{{ form.message.id_for_label }}" aria-describedby="quoteText" placeholder="Me caga... "> -->
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
+        <small id="quote_help" class="form-text text-muted">Tu mensaje es completamente anónimo.</small>
     </form>
 </div>
