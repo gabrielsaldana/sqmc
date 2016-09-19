@@ -1,0 +1,32 @@
+$a-tags: 'a, a:active, a:hover, a:visited';
+$a-tags-hover: 'a:active, a:hover';
+$brand-primary: #ff4500 !default;
+$btn-primary-bg: $brand-primary !default;
+$btn-primary-border: $btn-primary-bg !default;
+#brand {
+  font-family: 'Carter One', sans-serif;
+  margin-bottom: 20px;
+  #{$a-tags},
+  #{$a-tags-hover} {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+.quote-box {
+  color: #373a3c;
+}
+
+.center-float {
+  text-align: center;
+  float: none;
+  margin: 0 auto;
+}
+
+.white-text {
+  color: #fff;
+}
+
+.control-label {
+  color: #fff;
+}
