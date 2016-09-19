@@ -3,6 +3,10 @@ $a-tags-hover: 'a:active, a:hover';
 $brand-primary: #ff4500 !default;
 $btn-primary-bg: $brand-primary !default;
 $btn-primary-border: $btn-primary-bg !default;
+.navbar-fixed-top {
+  background-color: $brand-primary;
+}
+
 #brand {
   font-family: 'Carter One', sans-serif;
   margin-bottom: 20px;
