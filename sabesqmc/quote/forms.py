@@ -7,19 +7,34 @@ from django.core import validators
 from django.db import IntegrityError
 from django.forms import ModelForm
 
+from crispy_forms.bootstrap import StrictButton
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Div, Field
+
 from .models import Quote
 
 class QuoteForm(ModelForm):
     """
     Form for sending a new message
     """
-    message = forms.CharField(label='Desahógate aquí', max_length=140, initial='Me caga ')
-    # is_annonymous = forms.BooleanField(required=False,
-    #                                    widget=forms.CheckboxInput())
+    message = forms.CharField(label='Desahógate aquí',
+                              max_length=140,
+                              initial='Me caga ')
 
     class Meta:
         model = Quote
         fields = ['message',]
+
+    def __init__(self, *args, **kwargs):
+        super(QuoteForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_tag = False
+        self.helper.help_text_inline = True
+        self.helper.html5_required = True
+        self.helper.layout = Layout(
+            Field('message', style="width: 680px;"),
+            StrictButton('Enviar', type="submit", name="submit-btn", css_class="btn-primary")
+        )
 
     def clean_message(self):
         """
