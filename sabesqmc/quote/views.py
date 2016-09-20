@@ -27,7 +27,7 @@ class QuoteCreateView(CreateView):
     """
     model = Quote
     form_class = QuoteForm
-    template_name = 'quote_form.html'
+    template_name = 'new.html'
 
     def get_success_url(self):
         return reverse('quote', args=(self.object.id,))
