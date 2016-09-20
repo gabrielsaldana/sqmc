@@ -12,4 +12,25 @@
 {% include 'quote.html' %}
 {% endfor %}
 
+
+{% if is_paginated %}
+<div class="row center-float">
+<ul class="pagination list-inline">
+  {% if page_obj.has_previous %}
+  <li class="list-inline-item">
+    <span><a href="?page={{ page_obj.previous_page_number }}">&#8678; Previous</a></span>
+  </li>
+  {% endif %}
+  <li class="list-inline-item">
+    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</span>
+  </li>
+  {% if page_obj.has_next %}
+  <li class="list-inline-item">
+    <span><a href="?page={{ page_obj.next_page_number }}">Next &#8680;</a></span>
+  </li>
+  {% endif %}
+</ul>
+</div>
+{% endif %}
+
 {% endblock content %}
