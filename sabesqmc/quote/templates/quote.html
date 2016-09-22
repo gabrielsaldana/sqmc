@@ -3,10 +3,16 @@
         <div class="card card-block quote-box">
             <h3 class="card-title quote-message">{{ quote|striptags|escape }}</h3>
             <div class="row quote-meta">
-                <div class="col-sm-6">
-                    <p class="quote-votes ">{{ quote.votes }} votos</p>
+                <div class="col-sm-4">
+                  <p class="quote-votes ">{{ quote.votes }} votos 💩</p>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
+                  <ul class="list-inline">
+                    <a href="http://twitter.com/home?status={{ quote|urlencode }} http://sabesquemecaga.com{{ quote.get_absolute_url }}"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="http://www.facebook.com/share.php?u=http://sabesquemecaga.com{{ quote.get_absolute_url }}&t={{ quote|urlencode }}"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                  </ul>
+                </div>
+                <div class="col-sm-4">
                     <p class="quote-date">{{ quote.date_created|date:"d/m/Y" }} {{ quote.date_created|time:"H:i"}}</p>
                 </div>
             </div>
