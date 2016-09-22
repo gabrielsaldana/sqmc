@@ -21,3 +21,4 @@ pip-log.txt
 # django environ file
 .env
 .pylintrc
+*.css
