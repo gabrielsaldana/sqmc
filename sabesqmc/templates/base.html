@@ -15,15 +15,31 @@
     </head>
     <body style="padding-top: 5em;" class="bg-inverse">
       <nav class="navbar navbar-fixed-top navbar-dark">
+        <a class="navbar-brand" href="/" style="padding:0; margin-top: 0; margin-bottom: 0;"><img height="36px" src="{% static 'imgs/poop.png' %}"></a>
         <ul class="nav navbar-nav">
-          <a class="navbar-brand" href="/" style="padding:0; margin-top: 0; margin-bottom: 0;"><img height="36px" src="{% static 'imgs/poop.png' %}"></a>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'latest' %}">Ver las más recientes</a>
+                    <a class="nav-link" href="{% url 'quotes:latest' %}">Ver las más recientes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'top' %}">Ver las más votadas</a>
+                    <a class="nav-link" href="{% url 'quotes:top' %}">Ver las más votadas</a>
                 </li>
-            </ul>
+        </ul>
+          {% if user.is_authenticated %}
+
+        <div class="btn-group pull-xs-right">
+            <div class="btn-group">
+              <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ user }}
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ user.get_absolute_url }}">Perfil</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/accounts/logout">Logout</a>
+              </div>
+            </div>
+            {% else %}
+            <div class="pull-xs-right"><a class="nav-link" href="{% url 'account_login' %}">Login</a></div>
+          {% endif %}
         </nav>
         <div class="container">
             <div class="row">
