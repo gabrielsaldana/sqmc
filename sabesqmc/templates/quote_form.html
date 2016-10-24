@@ -19,7 +19,7 @@
 {% endif %}
 
 <div class="row center-float">
-<form class="form-inline" method="POST" action="/new">
+<form class="form-inline" method="POST" action="{% url 'quotes:new' %}">
   {% csrf_token %}
   <div class="form-group">
     <label for="id_message" class="requiredField">Desahógate aquí </label>

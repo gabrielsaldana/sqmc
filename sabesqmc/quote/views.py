@@ -4,7 +4,6 @@ from django.views.generic import DetailView, ListView
 from django.views.generic.base import RedirectView
 from django.views.generic.edit import CreateView
 
-
 # Create your views here.
 from .models import Quote
 from .forms import QuoteForm
@@ -30,7 +29,7 @@ class QuoteCreateView(CreateView):
     template_name = 'new.html'
 
     def get_success_url(self):
-        return reverse('quote', args=(self.object.id,))
+        return reverse('quotes:quote', args=(self.object.id,))
 
 
 class QuoteDetailView(DetailView):

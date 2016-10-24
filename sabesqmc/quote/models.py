@@ -49,7 +49,7 @@ class Quote(models.Model):
         return "%s" % self.message
 
     def get_absolute_url(self):
-        return reverse('quote', args=[self.id])
+        return reverse('quotes:quote', args=[self.id])
 
     def vote(self, how):
         if how == "up":
