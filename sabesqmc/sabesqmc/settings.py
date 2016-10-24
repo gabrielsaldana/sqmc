@@ -55,6 +55,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.twitter',
     'crispy_forms',
+    'disqus',
 ]
 
 LOCAL_APPS = [
@@ -170,6 +171,10 @@ SOCIALACCOUNT_PROVIDERS = \
 AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = 'users:redirect'
 LOGIN_URL = 'account_login'
+
+# Disqus
+DISQUS_API_KEY = env('DISQUS_API_KEY')
+DISQUS_WEBSITE_SHORTNAME = env('DISQUS_WEBSITE_SHORTNAME')
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
