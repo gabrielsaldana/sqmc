@@ -172,6 +172,13 @@ AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = 'homepage'
 LOGIN_URL = 'account_login'
 
+# REST Framework
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
+
 # Disqus
 DISQUS_API_KEY = env('DISQUS_API_KEY')
 DISQUS_WEBSITE_SHORTNAME = env('DISQUS_WEBSITE_SHORTNAME')
