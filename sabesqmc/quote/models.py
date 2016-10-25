@@ -52,9 +52,12 @@ class Quote(models.Model):
         return reverse('quotes:quote', args=[self.id])
 
     def vote(self, how):
+        """
+        Makes one vote in the direction specified
+        Returns the new total of votes
+        """
         if how == "up":
             self.votes += 1
         elif how == "down":
             self.votes -= 1
-        self.save()
         return self.votes
