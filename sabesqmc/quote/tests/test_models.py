@@ -45,3 +45,12 @@ class TestQuote(TestCase):
         self.assertEqual(2, Quote.objects.all().count())
         # check approved filtering
         self.assertEqual(1, Quote.objects.approved().count())
+
+    def test_vote(self):
+        quote1 = Quote(message="Me caga probar esto")
+        quote1.save()
+        self.assertEqual(0, quote1.votes)
+        quote1.vote('up')
+        self.assertEqual(1, quote1.votes)
+        quote1.vote('down')
+        self.assertEqual(0, quote1.votes)
