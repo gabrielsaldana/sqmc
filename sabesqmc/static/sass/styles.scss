@@ -1,8 +1,8 @@
 $a-tags: 'a, a:active, a:hover, a:visited';
 $a-tags-hover: 'a:active, a:hover';
-$brand-primary: #ff4500 !default;
-$btn-primary-bg: $brand-primary !default;
-$btn-primary-border: $btn-primary-bg !default;
+$brand-primary: #ff4500;
+$btn-primary-bg: $brand-primary;
+$btn-primary-border: $btn-primary-bg;
 .navbar-fixed-top {
   background-color: $brand-primary;
 }
