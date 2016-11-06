@@ -23,3 +23,5 @@ pip-log.txt
 .pylintrc
 *.css
 node_modules
+bower_components
+*.css

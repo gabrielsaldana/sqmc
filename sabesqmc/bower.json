@@ -1,0 +1,22 @@
+{
+  "name": "sabesquemecaga",
+  "description": "",
+  "main": "base.html",
+  "authors": [
+    "Gabriel Saldana"
+  ],
+  "license": "GPL-3.0",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-social": "^5.0.0",
+    "bootstrap": "v4.0.0-alpha.5"
+  }
+}
