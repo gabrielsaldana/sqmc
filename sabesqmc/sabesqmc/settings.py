@@ -117,7 +117,7 @@ WSGI_APPLICATION = 'sabesqmc.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    'default': env.db('DATABASE_URL')
+    'default': env.db()
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
@@ -232,4 +232,15 @@ MEDIA_ROOT = str(APPS_DIR('media'))
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#media-url
 MEDIA_URL = '/media/'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# Admin site url
+DJANGO_ADMIN_URL = env('DJANGO_ADMIN_URL')
+
+EMAIL_BACKEND = env(EMAIL_BACKEND, default='django.core.mail.backends.console.EmailBackend')
+email_config = env.email_url()
+DEFAULT_FROM_EMAIL = 'info@sabesquemecaga.com'
+SERVER_EMAIL='info@sabesquemecaga.com'
+EMAIL_HOST=email_config['EMAIL_HOST']
+EMAIL_PORT=email_config['EMAIL_PORT']
+EMAIL_HOST_USER=email_config['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD=email_config['EMAIL_HOST_PASSWORD']
+EMAIL_USE_TLS=email_config['EMAIL_USE_TLS']
