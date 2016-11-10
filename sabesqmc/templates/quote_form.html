@@ -22,10 +22,10 @@
 <form class="form-inline" method="POST" action="{% url 'quotes:new' %}">
   {% csrf_token %}
   <div class="form-group">
-    <label for="id_message" class="requiredField">Desahógate aquí </label>
+    <label for="id_message" class="requiredField white-text">Desahógate aquí </label>
     <input id="id_message" class="form-control" style="width: 680px;" maxlength="140" name="message" type="text" value="Me caga " required>
   </div>
-  <button  class="btn btn-primary" name="submit-btn" type="submit">Enviar</button>
+  <button  class="btn btn-secondary" name="submit-btn" type="submit">Enviar</button>
 </form>
 </div>
 
