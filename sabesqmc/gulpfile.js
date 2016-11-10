@@ -1,5 +1,9 @@
 'use strict';
 
+// Fix for gulp-autoprefixer requiring Promise
+// https://github.com/postcss/postcss-nested/issues/30
+require('es6-promise').polyfill();
+
 var gulp = require('gulp'),
   pjson = require('./package.json'),
   sass = require('gulp-sass'),
