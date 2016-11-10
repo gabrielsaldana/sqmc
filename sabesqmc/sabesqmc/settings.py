@@ -236,11 +236,13 @@ MEDIA_URL = '/media/'
 DJANGO_ADMIN_URL = env('DJANGO_ADMIN_URL')
 
 EMAIL_BACKEND = env('EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
-email_config = env.email_url()
 DEFAULT_FROM_EMAIL = 'info@sabesquemecaga.com'
 SERVER_EMAIL='info@sabesquemecaga.com'
-EMAIL_HOST=email_config['EMAIL_HOST']
-EMAIL_PORT=email_config['EMAIL_PORT']
-EMAIL_HOST_USER=email_config['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD=email_config['EMAIL_HOST_PASSWORD']
-EMAIL_USE_TLS=email_config['EMAIL_USE_TLS']
+
+if not DEBUG:
+    email_config = env.email_url('EMAIL_URL', default='')
+    EMAIL_HOST=email_config['EMAIL_HOST']
+    EMAIL_PORT=email_config['EMAIL_PORT']
+    EMAIL_HOST_USER=email_config['EMAIL_HOST_USER']
+    EMAIL_HOST_PASSWORD=email_config['EMAIL_HOST_PASSWORD']
+    EMAIL_USE_TLS=email_config['EMAIL_USE_TLS']
