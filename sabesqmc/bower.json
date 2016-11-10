@@ -18,5 +18,8 @@
   "dependencies": {
     "bootstrap-social": "^5.0.0",
     "bootstrap": "v4.0.0-alpha.5"
+  },
+  "resolutions": {
+    "bootstrap": "v4.0.0-alpha.5"
   }
 }
