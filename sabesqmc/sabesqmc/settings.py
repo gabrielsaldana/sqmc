@@ -32,7 +32,7 @@ SECRET_KEY = env('DJANGO_SECRET_KEY', default='CHANGEME!!!')
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#debug
 DEBUG = env.bool('DJANGO_DEBUG', False)
 
-ALLOWED_HOSTS = ['sabesquemecaga.com', 'www.sabesquemecaga.com']
+ALLOWED_HOSTS = ['sqmc.gsaldana.com', 'sabesquemecaga.com', 'www.sabesquemecaga.com']
 
 # Application definition
 
