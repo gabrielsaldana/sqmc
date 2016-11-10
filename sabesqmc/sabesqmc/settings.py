@@ -235,7 +235,7 @@ MEDIA_URL = '/media/'
 # Admin site url
 DJANGO_ADMIN_URL = env('DJANGO_ADMIN_URL')
 
-EMAIL_BACKEND = env(EMAIL_BACKEND, default='django.core.mail.backends.console.EmailBackend')
+EMAIL_BACKEND = env('EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
 email_config = env.email_url()
 DEFAULT_FROM_EMAIL = 'info@sabesquemecaga.com'
 SERVER_EMAIL='info@sabesquemecaga.com'
