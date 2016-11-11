@@ -1,0 +1,52 @@
+---
+# Setup nginx and uwsgi services
+- name: Clone code from repository
+  git: repo=https://github.com/gabrielsaldana/sqmc.git
+       dest="{{basedir}}"
+       force=yes
+  tags:
+    - install
+
+# - name: Create symlink on /var/www
+#   become: yes
+#   become_method: sudo
+#   become_user: root
+#   shell: "ln -sn {{basedir}} /var/www/{{app_name}}"
+
+- name: Copy nginx configuration file
+  template: src=nginx.j2 dest="/etc/nginx/sites-available/{{app_name}}"
+  tags:
+    - install
+
+- name: Enable website
+  file: src="/etc/nginx/sites-available/{{app_name}}"
+        dest="/etc/nginx/sites-enabled/{{app_name}}"
+        state=link
+  tags:
+    - install
+  notify:
+    - restart nginx
+
+- name: Make sure nginx server is running
+  service: name=nginx state=started enabled=yes
+  tags:
+    - install
+
+- name: Copy uwsgi configuration file
+  template: src=uwsgi.j2 dest="/etc/uwsgi/apps-available/{{app_name}}.ini"
+  tags:
+    - install
+
+- name: Enable app
+  file: src="/etc/uwsgi/apps-available/{{app_name}}.ini"
+        dest="/etc/uwsgi/apps-enabled/{{app_name}}.ini"
+        state=link
+  tags:
+    - install
+  notify:
+    - restart uwsgi
+
+- name: Make sure uwsgi server is running
+  service: name=uwsgi state=started enabled=yes
+  tags:
+    - install

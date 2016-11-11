@@ -1,0 +1,13 @@
+[uwsgi]
+master=true
+plugins=python3
+enable-threads=true
+processes=10
+socket=/tmp/{{app_name}}.sock
+chdir={{app_path}}
+wsgi-file={{app_path}}/sabesqmc/wsgi.py
+virtualenv={{virtualenv}}
+
+
+
+

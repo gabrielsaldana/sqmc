@@ -1,0 +1,33 @@
+---
+- name: make sure postgresql server is running
+  service: name=postgresql state=started
+
+- name: Install psycopg2 python module
+  pip: name=psycopg2
+
+- name: Create database
+  become: yes
+  become_user: postgres
+  postgresql_db: name="{{dbname}}"
+                 encoding='UTF-8'
+                 lc_collate='es_MX.utf-8'
+                 lc_ctype='es_MX.utf8'
+                 template='template0'
+
+- name: Create database user
+  become: yes
+  become_user: postgres
+  postgresql_user: db="{{dbname}}"
+                   name="{{dbuser}}"
+                   password="{{dbpassword}}"
+                   priv=ALL
+
+- name: Ensure user does not have unnecessary privilege
+  become: yes
+  become_user: postgres
+  postgresql_user: name={{dbuser}} role_attr_flags=NOSUPERUSER,NOCREATEDB
+
+- name: Ensure no other user can access the database
+  become: yes
+  become_user: postgres
+  postgresql_privs: db={{dbname}} role=PUBLIC type=database priv=ALL state=absent

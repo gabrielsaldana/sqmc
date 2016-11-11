@@ -1,0 +1,55 @@
+---
+- name: Update code to latest version
+  git: repo=https://github.com/gabrielsaldana/sqmc.git
+       dest="{{basedir}}"
+       update=yes
+       force=yes
+  tags:
+    - deploy
+
+- name: Copy production .env file
+  copy: src=~/Documents/projects/sqmc/sabesqmc/sabesqmc/.env-production
+        dest="{{app_path}}/sabesqmc/.env"
+  tags:
+    - deploy
+
+- name: Install requirements in virtualenv
+  pip: requirements="{{basedir}}/requirements.txt"
+       virtualenv="{{virtualenv}}"
+       virtualenv_python=python3
+  tags:
+    - deploy
+
+- name: Run migrations
+  django_manage: command=migrate
+                 app_path="{{app_path}}"
+                 virtualenv="{{virtualenv}}"
+  tags:
+    - deploy
+
+- name: Install node.js dependencies
+  npm: path="{{app_path}}"
+       production=no
+  tags:
+    - deploy
+
+- name: Install bower dependencies
+  bower: path="{{app_path}}"
+  tags:
+    - deploy
+
+- name: Generate JS/CSS files
+  shell: gulp styles
+  args:
+    chdir: "{{app_path}}"
+  tags:
+    - deploy
+
+- name: Collect static files
+  django_manage: command=collectstatic
+                 app_path="{{app_path}}"
+                 virtualenv="{{virtualenv}}"
+  tags:
+    - deploy
+  notify:
+    - restart uwsgi

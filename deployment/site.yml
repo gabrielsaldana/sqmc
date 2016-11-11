@@ -1,0 +1,19 @@
+---
+# This playbook deploys the application
+- name: Install and setup application
+  hosts: all
+  become: yes
+  become_method: sudo
+  become_user: root
+  gather_facts: no
+
+  roles:
+    - common
+    - database
+    - webapp
+
+- name: Update code to latest version
+  hosts: all
+
+  roles:
+    - webapp

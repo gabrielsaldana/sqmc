@@ -1,0 +1,5 @@
+---
+app_name: sqmc
+server_name: sqmc.gsaldana.com www.sabesquemecaga.com sabesquemecaga.com
+virtualenv: "{{basedir}}/.venv"
+app_path: "{{basedir}}/sabesqmc"
