@@ -54,7 +54,7 @@ class MostVotedView(ListView):
     queryset = Quote.objects.approved().order_by('-votes')
     context_object_name = 'quote_list'
     template_name = 'list.html'
-    paginate_by = 10
+    paginate_by = 12
 
     def get_context_data(self, **kwargs):
         context = super(MostVotedView, self).get_context_data(**kwargs)
@@ -70,7 +70,7 @@ class RecentView(ListView):
     queryset = Quote.objects.approved().order_by('-date_created')
     context_object_name = 'quote_list'
     template_name = 'list.html'
-    paginate_by = 10
+    paginate_by = 12
 
     def get_context_data(self, **kwargs):
         context = super(RecentView, self).get_context_data(**kwargs)
