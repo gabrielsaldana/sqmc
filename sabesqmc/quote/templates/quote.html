@@ -13,7 +13,7 @@
                   </ul>
                 </div>
                 <div class="col-sm-4">
-                    <p class="quote-date">{{ quote.date_created|date:"d/m/Y" }} {{ quote.date_created|time:"H:i"}}</p>
+                  <p class="quote-date"><a href="{{ quote.get_absolute_url }}">{{ quote.date_created|date:"d/m/Y" }} {{ quote.date_created|time:"H:i"}}</a></p>
                 </div>
             </div>
         </div>
