@@ -34,8 +34,9 @@
 </div>
 
 {% include 'quote_form.html' %}
-
-<!-- Disqus -->
-{% disqus_show_comments %}
-<!-- end:Disqus -->
-{% endblock content %}
+<div class="col-md-8 offset-md-2 comments-section">
+  <!-- Disqus -->
+  {% disqus_show_comments %}
+  <!-- end:Disqus -->
+  {% endblock content %}
+</div>
